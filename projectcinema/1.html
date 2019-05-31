@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <script>
+            function getParentNode(oThis, sNodeName) {
+                while(oThis.nodeName != sNodeName && oThis.nodeName != 'BODY' )  {
+                    oThis=oThis.parentNode;
+                }
+                return oThis.nodeName!='BODY'?oThis:null;
+            }   
+ 
+            function showRow(obj) {
+                var tr = getParentNode(obj, 'TR');
+                if(tr) {
+                    alert(tr.rowIndex)
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <table border='1' width='100%'>
+            <tr>
+                <td onclick = 'showRow(this)'>
+                        sldnfl/sdnf/lsdnfv/sdfvns/fv
+                </td>
+            </tr>
+            <tr>
+                <td onclick = 'showRow(this)'>
+                        sldnfl/sdnf/lsdnfv/sdfvns/fv
+                </td>
+            </tr>
+            <tr>
+                <td onclick = 'showRow(this)'>
+                        sldnfl/sdnf/lsdnfv/sdfvns/fv
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>

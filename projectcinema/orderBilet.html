@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+ <head>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+     <meta charset="utf-8">
+  <title>Кинотеатр "Золотая Улитка"</title>
+  <style>
+ body {
+    font: 14px Arial, Helvetica, sans-serif; /* Рубленый шрифт текста */
+    margin: 0; /* Отступы на странице */
+   }
+   h1 {
+    font-size: 36px; /* Размер шрифта заголовка шапки */
+    margin: 0; /* Убираем отступы */
+    color: #fc6; /* Цвет текста заголовка шапки */
+   }
+   h2 {
+    margin-top: 0; /* Убираем отступ сверху */
+   }
+   .header {
+    background: #0080c0; /* Цвет фона шапки */
+    padding: 10px; /* Поля вокруг текста */
+   }
+   .sidebar {
+    float: left; /* Обтекание справа */
+    border: 1px solid #333; /* Рамка левого меню */
+    width: 20%; /* Ширина левой колонки */
+    padding: 5px; /* Поля внутри блока */
+    margin: 10px 10px 20px 5px; /* Значения отступа от блока */
+   }
+   .content {
+    margin: 10px 5px 20px 25%; /* Значения отступа от левого блока */
+    padding: 5px; /* Поля внутри блока */
+    border: 1px solid #333; /* Рамка контента */
+   }
+   .footer {
+    background: #333; /* Цвет фона подвал (футера) */
+    padding: 5px; /* Поля внутри блока */
+    color: #fff; /* Цвет текста футера */
+    clear: left; /* Отменяем действие float */
+   }
+      
+      td{
+          
+          width: 60px;
+          height: 60px;
+           border-radius: 10px;
+          background-repeat: no-repeat;
+          background-position:center;
+      }
+      table{
+          
+    border-collapse: separate; /* Способ отображения границы */ 
+     
+    border-spacing: 11px 11px; /* Расстояние между ячейками */ 
+      }
+      
+     
+      #myTBL     {background: white; color: black}
+#myTBL td.act {background: black; color: white}
+
+  </style>
+     
+     <script>
+         var myArray = [];
+          var myArray1 = [];
+         
+         var Arraytd = [];
+         var Arraytr = [];
+         
+          function func(v,e){  
+var input1 = +document.getElementById(v).value;
+			var intp=$(e).find('td').first().text();
+			var result = document.getElementById('res');
+              var result1 = document.getElementById('res1');
+            var t=input1+intp;
+             if(document.getElementById(v).style.background=="red")
+                 {
+                     
+                    for(var i=0; i < myArray.length; i++)
+                        {
+                            if (myArray[i]==t)
+                                {
+                            myArray.splice(i,1);
+                        Arraytd.splice(i,1);
+                                }
+                        }
+                      result.innerHTML="";
+                     result1.innerHTML="";
+                     for(var i=0; i < myArray.length; i++)
+                        result.innerHTML +=  myArray[i]+"<br>";
+                     
+                     
+                     for(var i=0; i < Arraytd.length; i++)
+                        result1.innerHTML +=  Arraytd[i]+"<br>";
+                     document.getElementById(v).style.background="blue";
+                    
+			}
+              else
+                 {
+                     Arraytd.push(input1);
+                     myArray.push(t);
+                     result.innerHTML="";
+                     result1.innerHTML="";
+			for(var i=0; i < myArray.length;  i++)
+                        result.innerHTML +=  myArray[i]+"<br>";
+                     
+                     
+                     for(var i=0; i < Arraytd.length;  i++)
+                        result1.innerHTML +=  Arraytd[i]+"<br>";
+                     
+                     
+                 document.getElementById(v).style.background="red";
+                     //alert( intp);
+                 }  ;
+};
+         
+         
+        onload=function(){
+var m, k;
+m=document.querySelectorAll("#myTBL td");
+//если нужно ниже ие8
+//m=document.getElementById("myTBL").getElementsByTagName("td");
+k=m.length;
+while(k--){m[k].onclick=clikTD};//вешаем событие на каждую ячейку
+ };
+ 
+function clikTD(){
+  
+//если есть класс, удаляем его, если нет класса, вешаем класс
+if(this.className==="act"){this.className=""}
+else{this.className="act" };
+ };
+         
+         
+        
+
+     </script>
+     
+
+
+
+ </head>
+ <body onload="init()">
+   
+  <div class="header"><h1>Блог BlogGood.ru</h1></div>
+  <div class="sidebar">
+    <p><a href="#" >Главная</a></p>
+    <p><a href="#">Интервью</a></p>
+    <p><a href="#">Вопросы</a></p>
+  </div>
+  <div class="content">
+      
+      <div class="order">
+      <table id="myTBL">
+          <tr id="e" >
+              <td id="111" >1</td>
+              <td   ><input id="1" type="button" value="1" onclick="func(this.id,e)"  ></td>
+              <td   ><input id="2" type="button" value="2" onclick="func(this.id,e)"  ></td>
+              <td   ><input id="3" type="button" value="1" onclick="func(this.id,e)"></td>
+              <td   ><input id="4" type="button" value="4" onclick="func(this.id,e)"></td>
+              <td   ><input id="5" type="button" value="5" onclick="func(this.id,e)"></td>
+              <td   ><input id="6" type="button" value="6" onclick="func(this.id,e)"></td>
+              <td   ><input id="7" type="button" value="7" onclick="func(this.id,e)"></td>
+              <td   ><input id="8" type="button" value="1" onclick="func(this.id,e)"></td>
+              <td   ><input id="9" type="button" value="9" onclick="func(this.id,e)"></td>
+          </tr>
+           <tr id="ew" >
+               <td id="22">2</td>
+            <td   ><input id="10" type="button" value="1" onclick="func(this.id,ew)"></td>
+              <td   ><input id="11" type="button" value="2" onclick="func(this.id,ew)"></td>
+              <td   ><input id="12" type="button" value="3" onclick="func(this.id,ew)"></td>
+              <td   ><input id="13" type="button" value="4" onclick="func(this.id,ew)"></td>
+              <td   ><input id="14" type="button" value="5" onclick="func(this.id,ew)"></td>
+              <td   ><input id="15" type="button" value="1" onclick="func(this.id,ew)"></td>
+              <td   ><input id="16" type="button" value="7" onclick="func(this.id,ew)"></td>
+              <td   ><input id="17" type="button" value="8" onclick="func(this.id,ew)"></td>
+              <td   ><input id="18" type="button" value="9" onclick="func(this.id,ew)"></td>
+          </tr>
+           <tr>
+               <td>3</td>
+            <td   ><input id="butm" type="button" value="1" onclick="func()"></td>
+              <td   ><input id="butm" type="button" value="2" onclick="func()"></td>
+              <td   ><input id="butm" type="button" value="3" onclick="func()"></td>
+              <td   ><input id="butm" type="button" value="4" onclick="func()"></td>
+              <td   ><input id="butm" type="button" value="5" onclick="func()"></td>
+              <td   ><input id="butm" type="button" value="6" onclick="func()"></td>
+              <td   ><input id="butm" type="button" value="7" onclick="func()"></td>
+              <td   ><input id="butm" type="button" value="8" onclick="func()"></td>
+              <td   ><input id="butm" type="button" value="9" onclick="func()"></td>
+          </tr>
+           <tr>
+           <td   ><input id="butm" type="button" value="1" onclick="func()"></td>
+              <td   ><input id="butm" type="button" value="2" onclick="func()"></td>
+              <td   ><input id="butm" type="button" value="3" onclick="func()"></td>
+              <td   ><input id="butm" type="button" value="4" onclick="func()"></td>
+              <td   ><input id="butm" type="button" value="5" onclick="func()"></td>
+              <td   ><input id="butm" type="button" value="6" onclick="func()"></td>
+              <td   ><input id="butm" type="button" value="7" onclick="func()"></td>
+              <td   ><input id="butm" type="button" value="8" onclick="func()"></td>
+              <td   ><input id="butm" type="button" value="9" onclick="func()"></td>
+          </tr>
+           <tr>
+           <td   ><input id="butm" type="button" value="1" onclick="func()"></td>
+              <td   ><input id="butm" type="button" value="2" onclick="func()"></td>
+              <td   ><input id="butm" type="button" value="3" onclick="func()"></td>
+              <td   ><input id="butm" type="button" value="4" onclick="func()"></td>
+              <td   ><input id="butm" type="button" value="5" onclick="func()"></td>
+              <td   ><input id="butm" type="button" value="6" onclick="func()"></td>
+              <td   ><input id="butm" type="button" value="7" onclick="func()"></td>
+              <td   ><input id="butm" type="button" value="8" onclick="func()"></td>
+              <td   ><input id="butm" type="button" value="9" onclick="func()"></td>
+          </tr>
+          </table>
+          <span id="res"></span>
+          <br>
+          <span id="res1"></span>
+
+      </div>
+     <input type="button" id="d" value="1" onclick="func(this.id)">
+      
+      <script>
+          var d=1;
+          var r=11;
+          function init(){ 
+              //var i= +document.getElementById('1').value;
+                //var j= document.getElementById('11');
+              
+                      
+              for(var y=1;y<20;y++)
+                  {
+                      var i= +document.getElementById(y).value;
+          if(i==d )
+              document.getElementById(y).style.background="red";
+                  }
+                      
+                  
+             }
+      </script>
+    <h2>История, которая меня впечатлила…</h2>
+<p>
+Как часто вы задумываетесь над смыслом жизни?
+А находите ли вы ответ на вопрос «в чем смысл жизни»?
+Что уже успели сделать за дарованные вам годы жизни?
+Вот еще один год подходит к концу… Довольны ли вы тем, как вы его прожили?
+Я очень часто огорчаюсь от того, что за свои годы ничего существенного
+не достигла. Нет в моей жизни такого поступка, которым действительно
+можно было бы гордиться. И когда я познакомилась с историей этой
+маленькой девочки, я до глубины души была впечатлена!
+</p>
+  </div>
+  <div class="footer">&copy; Костаневич Степан</div>
+       <script>
+     var result = document.getElementById('res');
+         result.innerHTML =  "Sveta"
+     </script>
+ </body>
+</html>
